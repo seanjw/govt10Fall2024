@@ -1,0 +1,120 @@
+---
+title: "Problem Set 0"
+author: "Sean Westwood"
+format: pdf
+---
+
+```{r setup, include=FALSE}
+library(formatR)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Basic Practice
+
+1.1. Find the sum total of the following: 109, 9830, 3895, 5892955, 1, 48583, 8, 444, 3553, 6?
+
+```{r}
+
+```
+Answer: 
+
+1.2. Is this value evenly divisible by 76?
+```{r}
+
+```
+Answer: 
+
+1.3. Assuming that each letter in the English alphabet takes the value of its place in the alphabet (i.e., A= 1, B=2, ... Z= 26) and spaces are 0, what is the value of `GIVE YOU UP`?
+```{r}
+
+```
+Answer: 
+
+1.4. What is the value of `NEVER GONNA`?
+
+```{r}
+
+```
+Answer: 
+
+1.5. Create a variable called `rick` and set it to answer of 1.3.  Also create a variable called `astley` and set it the answer to 1.4.  Multiply both by 2009 and then subtract `rick` from `astley`.
+
+```{r}
+
+```
+Answer: 
+
+2. We will now work with the following dataset:
+
+# Analysis of the 1932 German Election during the Weimar Republic
+
+Who voted for the Nazis?  Researchers attempted to answer this question by analyzing aggregate election data from the 1932 German election during the Weimar Republic.
+
+This exercise is based on the following article: King, Gary, Ori Rosen, Martin Tanner, Alexander F. Wagner. 2008.  "[Ordinary Economic Voting Behavior in the Extraordinary Election of Adolf Hitler.](http://dx.doi.org/10.1017/S0022050708000788)" *Journal of Economic History* 68(4): 951-996.  
+
+We analyze a simplified version of the election outcome data, which records, for each precinct, the number of eligible voters as well as the number of votes for the Nazi party.  In addition, the data set contains the aggregate occupation statistics for each precinct. 
+
+```{r}
+nazi <- read.csv("nazis.csv")
+```
+
+| Name            | Description                                          |
+|-----------------|------------------------------------------------------|
+| shareself       | Proportion of self-employed potential voters         |
+| shareblue       | Proportion of blue-collar potential voters           |
+| sharewhite      | Proportion of white-collar potential voters          |
+| sharedomestic   | Proportion of domestically employed potential voters |
+| shareunemployed | Proportion of unemployed potential voters            |
+| nvoter          | Number of eligible voters                            |
+| nazivote        | Number of votes for Nazis                            |
+
+The goal of analysis is to investigate which types of voters (based on their occupation category) cast ballots for the Nazis.  One hypothesis says that the Nazis received much support from blue-collar workers. Since the data do not directly tell us how many blue-collar workers voted for the Nazis, we must infer this information using a statistical analysis with certain assumptions.  Such an analysis where researchers try to infer individual behaviors from aggregate data is called ecological inference.
+
+2.1. How many rows are there in the dataset?
+```{r}
+
+```
+Answer: 
+
+2.2. What is the average number of eligible voters?
+```{r}
+
+```
+Answer: 
+
+2.3. What is the median number of votes for Nazis?
+```{r}
+
+```
+Answer: 
+
+2.4. How many total votes did the Nazis get (save this result to a variable named `nazitotalvote`)? (Hint: there is a function that might be useful)
+```{r}
+
+```
+Answer: 
+
+2.5. How many total eligible voters were there (save this result to a variable named `totalvote`)? 
+```{r}
+
+```
+Answer: 
+
+2.6. What percent of the vote did the Nazis get?
+```{r}
+
+```
+Answer: 
+
+2.7. How many eligible voters were blue class?
+```{r}
+
+```
+Answer: 
+
+2.8. Assume that every blue class voter voted for the Nazis is this enough to explain total Nazi support?
+```{r}
+
+```
+Answer: 
+

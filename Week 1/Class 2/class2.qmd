@@ -1,0 +1,208 @@
+---
+title: "Class 2"
+author: "Sean Westwood"
+format:
+  pdf
+---
+
+```{r setup, echo=F}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+## Working with objects
+
+In R we can store *things* as objects.  R is a weakly typed language (there are variable types, but you don't need to declare them upfront).
+
+This lets us run a computation and store the result for later.  
+
+1. Save the results of $$ \left | \frac{5^{25-2}}{6-4+1*2} \right | $$ to a variable object named *output*.
+
+```{r}
+
+```
+
+2. Get the value of the variable *output.*
+```{r}
+
+```
+
+3. We have created a variable that contains a numeric value.  If we look at the environment tab we will see the variable and its value.
+
+We didn't tell R what kind of variable we wanted to create.  R guessed that since we supplied a number, we wanted to create a numeric atomic vector.
+
+Are the following two variables the same? Why or why not?
+
+```{r}
+variable1 <- 27.4
+variable2 <- "27.4"
+```
+
+## Working with functions
+
+Functions are predefined blocks of code that perform a task on input (and generally) produce output.  For example, *abs()* is a function that computes the absolute value of some input.  With R functions input is provided between parentheses.  
+
+R has many built-in functions, but let's explore a few that are useful:
+
+1. Use an R function to compute the length, maximum value, range, and mean for the variable `stress` 
+
+```{r}
+stress <- c(10, 50, 60, 12, 460.25, 4802, 40, 0, 0, 9.5)
+```
+
+2. For these functions we are only supplying one input (an argument): a vector (more on vectors in next class).  Some functions are more complex and expect (require) multiple different inputs. A function you will need to master in this class is `round().`  `round()` rounds the numbers (and outputs of other functions) to a specified number of decimals
+
+R can help us figure out what a function expects.  We can load a help file for any function by adding a question mark and removing the parentheses. Try the following:
+
+```{r}
+?round
+```
+
+R tells us that there are two possible arguments:
+
+| Argument   | Explanation                                                                |
+|------------|----------------------------------------------------------------------------|
+| x          | a numeric vector. Or, for `round` and `signif`, a complex vector.          |
+| digits     | integer indicating the number of decimal places (round) or significant     |
+|            | digits (signif) to be used. Negative values are allowed (see ‘Details’).   |                             
+
+3.  Round the number 10.198109 to two decimal places.  Note that we would need to supply the *x* and *digits* arguments.
+
+```{r}
+
+```
+
+4. Round the mean of `stress` to 1 decimal place.
+```{r}
+
+```
+
+
+## Working with vectors 
+
+*Vectors* are one-dimensional arrays.  You can think of them as a single column of values.  We can manually create a vector using the *c()* function.  With c() we can concatenate objects into a single vector
+
+Let's look at the schools with the largest undergraduate populations:
+
+| School (state)                                | Fall 2015 undergraduate enrollment |
+|-----------------------------------------------|------------------------------------|
+| University of Central Florida                 | 54,513                             |
+| Liberty University (VA)                       | 49,863                             |
+| Texas A&M University—College Station          | 48,960                             |
+| Ohio State University—Columbus                | 45,289                             |
+| Arizona State University—Tempe                | 41,828                             |
+| Florida International University              | 41,038                             |
+| Pennsylvania State University—University Park | 40,742                             |
+| University of Texas—Austin                    | 39,619                             |
+| Michigan State University                     | 39,143                             |
+| Indiana University—Bloomington                | 38,364                             |
+
+1. First we will create a vector of enrollments.
+
+```{r}
+enrollments <- c(54513, 49863, 48960, 45289, 41828, 41038, 40742, 39619, 39143, 38364)
+```
+
+2. Now create a vector with enrollments from schools in Florida (call it `florida`) and another with enrollments from the other schools (`other`).  Combine both of these vectors into a new vector named `all.schools`.
+
+```{r}
+
+```
+
+3. Let's assume that class sizes are equal (they aren't).  How large is the freshman class at each school?
+
+```{r}
+
+```
+
+4. How much larger is the enrollment at University of Central Florida compared to the other schools?  
+
+First, we need to select just the value for UCF.  We can do this with indexing. Note: R indexes on 1 and not 0, so the first element in a vector is element 1.
+
+```{r}
+
+```
+
+Now we can take the difference.
+```{r}
+
+```
+
+
+5. Vectors only contain one "column" of data, which can make keeping track of things somewhat complex.  Let's return to the enrollment example.  To make sure we know which school corresponds to each value, we can take advantage of the *names()* function.  names() allows us to get AND set names for a variety of R objects.  With names() we can set a name for each value in the vector.
+
+Create a new vector (school.names) with the names of each of the 10 schools.
+
+```{r}
+school.names <- c("University of Central Florida",
+"Liberty University (VA)", 
+"Texas A&M University—College Station", 
+"Ohio State University—Columbus",
+"Arizona State University—Tempe",
+"Florida International University",
+"Pennsylvania State University—University Park",
+"University of Texas—Austin",
+"Michigan State University",
+"Indiana University—Bloomington")
+```
+
+If we supply the vector of all.schools to the names() function what do we get?
+```{r}
+names()
+```
+
+In the line above names() was used to "get" values.  We will now use it to set values:
+
+```{r}
+names(all.schools) <- 
+```
+
+Note: because we created school.names in an earlier block R will suggest it to us as we type in subsequent blocks. To accept the suggestion press "enter"
+
+## Loading data 
+
+For this class, all data are stored on GitHub.  Our first data set "UNpop.csv" contains population data and is formatted as such:
+
+| year | world.pop |
+|------|-----------|
+| 1950 | 2525779   |
+| 1960 | 3026003   |
+| 1970 | 3691173   |
+| 1980 | 4449049   |
+| 1990 | 5320817   |
+| 2000 | 6127700   |
+| 2010 | 6916183   |
+
+We will load the file into a new variable (UNpop).  This will create a new kind of object (a dataframe).  A dataframe is a rectangular object with rows and columns.  Columns typically haves names ("year" and "world.pop" in this case).
+
+```{r}
+UNpop <- read.csv("UNpop.csv")
+```
+
+1. To understand what is in the new variable UNpop we can use some helpful functions.  Find the number of rows, the number of columns and the names of the columns in this dataframe.
+```{r}
+
+```
+
+2. It is often useful to summarize the data in a dataframe.  Use the summary function to learn about the two columns in the dataframe.
+
+```{r}
+
+```
+
+## Selecting columns in a dataframe
+
+We can select columns in a dataframe by name using the *$* operator.  When using the *$* operator we place the name of the dataframe to the left and the name of the variable to the right.  For example, to select the year variable from the UNPop dataframe:
+
+```{r}
+UNPop$year
+```
+
+## Evaluation
+
+1. On a scale ranging between 1 (Too Hard) and 10 (Too Easy), how was today's class: 
+2. What was the easiest thing to understand?
+3. What was the most difficult thing to understand?
+4. How long did you spend on the assignment outside of class?

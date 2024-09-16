@@ -1,0 +1,89 @@
+---
+title: "Class 1"
+author: ""
+format:
+  pdf
+---
+
+```{r setup, echo=F}
+
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+
+```  
+
+# Markdown
+## A simple markup language
+
+Markdown allows us to format text.  Markdown can be compiled directly into a PDF, a Word file or an HTML file.  
+
+## Why Quarto?
+
+Quarto allows us to write text, write code and generate results within a single file.  In this class all in-class assignments and problem sets will be submitted using Quarto to generate PDF files.  
+
+## How to use markdown
+
+When you see a white background you are writing text.  You can use Markdown (or LaTeX) here.  However we will also be interested in writing code to explore and summarize data.  Code is placed in a *chunk.*  Chunks start and end with three grave accents (the same key as the tilde): ```.  
+
+`chunks` are interactive and allow to you run code. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing the following chunk by clicking the *Run* button (play button) within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+# Take the square root of 49
+# NOTE: we cannot use markdown in code chunks.  Here # means that we are creating a comment (notes that are not executable code).  We are not creating a header.
+sqrt(49)
+
+
+```
+
+# Working with R
+
+R is both a programming language and a programming environment.  We can use R to compute simple calculations like a calculator.  
+
+1. Find the sum of 75, 83, 93, 34, 75 and 81.  Searching the book and the internet will be very important in this class.  You might find useful information [here](http://www.cyclismo.org/tutorial/R/basicOps.html)
+```{r}
+
+```
+
+## Quick math refresher 
+
+1. Evaluate $$ \left | \frac{5^{25-2}}{6-4+1*2} \right | $$
+
+```{r}
+
+```
+
+2. Are the following chunks different?  Why or why not?
+
+```{r}
+7 * 5 / 8 * 3
+```
+
+```{r}
+7 * (5 / 8) * 3
+```
+
+3. Using R take the log of the number 14.
+
+```{r}
+
+```
+
+
+## Prepare for submission
+
+You will submit all assignments and problem sets as PDFs.  You create a PDF you will click the *Render* button.
+
+
+
+This assignment is due at the end of class.
+
+## Evaluation
+
+1. On a scale ranging between 1 (Too Hard) and 10 (Too Easy), how was today's class: 
+2. What was the easiest thing to understand?
+3. What was the most difficult thing to understand?
+4. How long did you spend on the assignment outside of class?
+
