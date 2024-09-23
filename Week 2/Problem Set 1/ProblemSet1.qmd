@@ -1,0 +1,145 @@
+---
+title: "Problem Set 1"
+author: ""
+format:
+  pdf
+---
+
+```{r setup, echo=F}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 50), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+# Fraud and Turnout in the 2020 Georgia Presidential Election
+
+This assignment is built on a controversial working paper: Lott, John R., “A Simple Test for the Extent of Voter Fraud with Absentee Ballots in the 2020 Presidential Election: Georgia and Pennsylvania Data,” Unpublished Manuscript, https://papers.ssrn.com/sol3/papers.cfm?abstractid=3756988, 2021.  The author attempts to identify fraud by comparing precinct in Georgia.  For this assignment we will explore turnout in these precinct.
+
+The following variables are in the georgia.csv file:
+
+| Variable                 | Description                               |
+|--------------------------|-------------------------------------------|
+| CountyWithFraud          | County with accused fraud                 |
+| countyName               | County Name                               |
+| precinct                 | Precinct name                             |
+| registeredVoters         | Number of registered voters               |
+| trumpElectionDayVotes    | Number of votes for Trump on election day |
+| trumpAdvancedVotingVotes | Number of advance votes for Trump         |
+| trumpAbsenteeVotes       | Number of absentee votes for Trump        |
+| trumpProvisionalVotes    | Number of provisional votes for Trump     |
+| trumpTotalVotes          | Total Trump votes                         |
+| bidenElectionDayVotes    | Number of votes for Biden on election day |
+| bidenAdvancedVotingVotes | Number of advance votes for Biden         |
+| bidenAbsenteeVotes       | Number of absentee votes for Biden        |
+| bidenProvisionalVotes    | Number of provisional votes for Biden     |
+| bidenTotalVotes          | Total Biden votes                         |
+| totalOfAllVotes          | Total votes for all candidates            |
+| percentWhite             | Percent of the precinct that is White     |
+| percentBlack             | Percent of the precinct that is Black     |
+| percentHispanic          | Percent of the precinct that is Hispanic  |
+
+## Loading the data
+
+```{r}
+georgia <- read.csv("georgia.csv")
+```
+
+## Questions
+
+### Question 1
+1.1. How many precincts are there in the data set? 
+```{r}
+
+```
+Answer: 
+
+1.2. What is the range of total votes for Trump?
+```{r}
+
+```
+Answer: 
+
+1.3. What is the range of total votes for Biden?
+```{r}
+
+```
+Answer: 
+
+### Question 2
+
+2.1. Trump and Biden were not the only presidential candidates on the ballot in Georgia.  Calculate the proportion of votes for a third party in each precinct (this is commonly called a vote share). $$Third\ party\ vote\ share = \frac{Total\ votes - (Total\ Biden\ votes + Total Trump\ Votes)}{Total\ votes}$$
+
+```{r}
+
+```
+2.2. What was the largest vote share for a third party observed in the data? (round to two decimal places)
+```{r}
+
+```
+Answer: 
+
+### Question 3
+
+3.1. Compute the percentage of Trump votes that were cast on election day and save this to a new column called `percentTrumpElectionDay`.  Do the same for Biden to create a `percentBidenElectionDay`
+```{r}
+
+```
+
+3.2. In how many precincts was election day turnout larger for Trump than for Biden? (hint: use the > operator to test an inequality; hint: the table() function could be helpful)
+
+```{r}
+
+```
+Answer: 
+
+3.3. Compute the percentage of Trump votes that were cast in advance of election day and save this to a new column called `percentTrumpAdvance`.  Do the same for Biden to create a `percentBidenAdvance`.  In how many precincts was the percent of advance turnout larger for Biden than Trump?
+
+```{r}
+
+```
+Answer: 
+
+### Question 4
+
+4.1. In how many precincts did Trump beat Biden?
+
+```{r}
+
+```
+Answer: 
+
+4.2. Create a new variable called `advanceAbsenteeProvisional` that records how many votes Biden earned form advance voting, absentee voting and provisional.
+```{r}
+
+```
+
+4.3. Compute Biden's margin of victory (Biden's total votes - Trump's total votes) in each precinct and save to a new variable called `bidenMargin`.  If the result of this calculation is positive, then Biden won.  It if is negative them Trump won.
+
+```{r}
+
+```
+
+4.4. In how many precincts did Biden defeat Trump because of advance, absentee and provisional voting? From Question 4.3. we know how many precincts Biden won.  Now assume that all advance, absentee and provisional voting for Biden didn't happen by subtracting these votes from Biden's total.  Without advance, absentee and provisional voting how many precincts did Biden win? (hint: it might be useful to use the approach from 4.3 and look at the sign of the margin).
+
+```{r}
+
+```
+Answer: 
+
+4.5. Repeat 4.4, but only remove absentee voters from Biden's total.  In how many precincts did Biden win?
+```{r}
+
+```
+Answer: 
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,85 @@
+---
+title: "Class 4"
+author: ""
+format:
+  pdf
+---
+
+```{r setup, echo=F}
+library(formatR)
+library(knitr)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+```
+
+# Causation
+
+## Practice
+
+One longstanding debate in the study of international relations concerns the question of whether individual political leaders can make a difference.  Some emphasize that leaders with different ideologies and personalities can significantly affect the course of a nation. Others argue that political leaders are severely constrained by historical and institutional forces.  Did individuals like Hitler, Mao, Roosevelt, and Churchill make a big difference?  The difficulty of empirically testing these arguments stems from the fact that the change of leadership is not random and there are many confounding factors to be adjusted for.
+
+In this exercise, we consider a *natural experiment* in which the success or failure of assassination attempts are assumed to be essentially random.
+
+This exercise is based on: Jones, Benjamin F, and Benjamin A Olken. 2009. “[Hit or Miss? The Effect of Assassinations on Institutions and  War.](http://dx.doi.org/10.1257/mac.1.2.55)” *American Economic Journal: Macroeconomics* 1(2): 55–87. 
+
+```{r}
+leaders <- read.csv("leaders.csv")
+head(leaders)
+```
+
+| Name           | Description                                                                      |
+|----------------|----------------------------------------------------------------------------------|
+| country        | The name of the country                                                          |
+| year           | Year of assassination                                                            |
+| leadername     | Name of leader who was targeted                                                  |
+| age            | Age of the targeted leader                                                       |
+| politybefore   | Average polity score during the 3 year period prior to the attempt               |
+| polityafter    | Average polity score during the 3 year period after the attempt                  |
+| civilwarbefore | 1 if country is in civil war during the 3 year period prior to the attempt, or 0 |
+| civilwarafter  | 1 if country is in civil war during the 3 year period after the attempt, or 0    |
+| interwarbefore | 1 if country is in international war during the 3 year period prior to the attempt |
+| interwarafter  | 1 if country is in international war during the 3 year period after the attempt, |
+| result         | Result of the assassination attempt, one of 10 categories                        |
+
+The polity variable represents the *polity score* from the Polity Project.  The Polity Project systematically documents and quantifies the regime types of all countries in the world from 1800.  The polity score is a 21-point scale ranging from -10 (hereditary monarchy) to 10 (consolidated democracy).  
+
+The result variable is a 10 category factor variable describing the result of each assassination attempt.
+
+## Question 1
+
+1.1. How many assassination attempts are recorded in the data?  
+
+```{r}
+
+```
+
+1.2. How many countries experience at least one leader assassination attempt? (The *unique()* function, which returns a set of unique values from the input vector, may be useful here).  
+
+```{r}
+
+```
+
+## Question 2
+
+2.1. Create a new binary variable named `success` that is equal to 1 if a leader dies from the attack within a month of the attack and to 0 if the leader survives.  Store this new variable as part of the original data frame.  What is the overall success rate of leader assassination?
+
+(hint: you can use *table()* to identify the possible values of the result variable)
+
+```{r}
+table(leaders$result)
+```
+
+## Question 3
+
+3.1. Is the average polity score 3 years prior to an assassination attempt different for successful and failed attempts?
+
+```{r}
+
+```
+
+
+## Evaluation
+
+1. On a scale ranging between 1 (Too Hard) and 10 (Too Easy), how was today's class: 
+2. What was the easiest thing to understand?
+3. What was the most difficult thing to understand?
+4. How long did you spend on the assignment outside of class?
