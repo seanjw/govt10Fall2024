@@ -1,0 +1,130 @@
+---
+title: "Homework 3"
+author: ""
+format: pdf
+---
+
+```{r setup, echo=F}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)    
+knitr::opts_chunk$set(error = TRUE)
+
+```
+
+The COVID-19 pandemic disrupted human society, and governments worldwide implemented diverse policies to curb its spread, including non-pharmaceutical interventions like Japan's early school closures. This assignment draws from a study focused on quantifying the effects of such policies on reducing infection rates.
+
+This exercise is based on the following study: 
+
+Fukumoto, K., McClean, C.T. & Nakagawa, K. [No causal effect of school closures in Japan on the spread of COVID-19 in spring 2020.](https://doi.org/10.1038/s41591-021-01571-8) *Nature Medicine 27*, 2111–2119 (2021)
+
+This exercise focuses on the school closure of April 6 as the only treatment variable.  If this treatment variable equals 1, it means that in a given municipality all elementary and junior high schools are closed as of the survey date, and 0 if they are open.
+
+The names and descriptions of variables in both data sets are:
+
+| Variable            | Description                                                                      |
+|---------------------|----------------------------------------------------------------------------------|
+| `municipality_code` | Municipality                                                                     |
+| `labor`             | Labor Force (2015)                                                               |
+| `elder.pop`         | Elderly Population (65 and older) (2015)                                         |
+| `hospitals`         | Density Index of Hospitals (2017)                                                |
+| `elementary`        | Population Density Index of Elementary School Students (2018)                    |
+| `junior`            | Population Density Index of Junior High School Students (2018)                   |
+| `prec_mean`         | Average Precipitation (average between 1981–2010)                                |
+| `log.number`        | Number of Bordering Municipalities (2020)                                        |
+| `age.0406`          | Mayor's Age (as of 2020.04.06)                                                   |
+| `shutdown.0406`     | Treatment Variable (treatment status on the 6th April)                           |
+| `X2020.X.XX`        | Number of Infections per 100,000 Municipal Residents on Day XX Month X Year 2020 |
+
+## Loading the data
+
+```{r}
+covid <- read.csv("covid.csv")
+```
+
+**Round all answers to two decimal places**
+
+# Question 1
+
+1.1. Compute the differences between the means of the treatment and control groups for each of the the following variables: `labor`, `elder.pop`, and `hospitals`.  In all cases subtract the mean of the control group from the mean of the treatment group.
+
+```{r}
+
+```
+
+Answer (labor):   
+Answer (elder.pop):  
+Answer (hospitals):  
+
+1.2. Compute the differences between the means of the treatment and control groups for `elementary`, `junior`, `prec_mean`, `log.number` and `age.0406`.
+
+```{r}
+
+```
+Answer (elementary):    
+Answer (junior):    
+Answer (prec_mean):   
+Answer (log.number):  
+Answer (age.0406): 
+
+1.3. Interpret the results for `hospitals`, `elementary` and `junior`. Are there any consistent patterns of differences between the two groups of municipalities? 
+
+Answer: 
+
+1.4. Create a new variable called `students` that is the sum of `elementary` and `junior`. Compute the differences between the means of the treatment and control groups for `students`. 
+
+```{r}
+
+```
+Answer: 
+
+## Question 2
+
+2.1. Compute a single variable `total_infections_april` that records the number of COVID-19 infections per 100,000 residents for April 1, 2020 to April 30, 2020. To do this you will need to sum the values of `X2020.4.01` to `X2020.4.30`.  What is the total number of infections for this period across all locations?
+
+Hint: there are many ways to do this.  You can optionally use the `rowSums` function in R.
+
+```{r}
+
+```
+Answer:
+
+2.2. Compute the average treatment effect (ATE) for school closure on the number of COVID-19 infections per 100,000 residents in April 2020. The ATE is defined as the difference in the average number of infections between the treatment and control groups. 
+
+```{r}
+
+```
+Answer: 
+
+2.3. Interpret the ATE. What does this value tell us about the effect of school closures on the number of COVID-19 infections per 100,000 residents in April 2020?
+
+Answer: 
+
+2.4. Compute the 25th and 75th percentiles of the `students` variable. **Round to four decimal places.**
+
+```{r}
+
+```
+Answer (25%):   
+Answer (75%):   
+
+2.5. Using the values you computed above, divide the municipalities that introduced the school closure interventions into three groups based on the `students`. Among these municipalities, the 'High exposure' group represents the group of municipalities whose student population density index was greater than or equal to the 75 percentile. The 'Low exposure' group represents the group of municipalities whose student population density index was less than or equal to the 25 percentile. The 'Medium exposure' group represents the remaining municipalities.  Store these three labels to a new column called `student_density_level`. How many municipalities are in each group?
+
+```{r}
+
+```
+
+Answer (High exposure):  
+Answer (Low exposure):   
+Answer (Medium exposure):   
+
+2.6. Why is the number of municipalities in the 'High exposure' group different from the number of municipalities in the 'Low exposure' group?
+
+Answer: 
+
+2.7. What *percent* of municipalities had a proportion of elderly residents over 25% and a mayor who was over 65 years old?
+
+```{r}
+
+```
+Answer: 

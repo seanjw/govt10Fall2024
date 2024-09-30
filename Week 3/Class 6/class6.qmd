@@ -1,0 +1,166 @@
+---
+title: "Class 6"
+author: "Sean Westwood"
+format:
+  pdf
+---
+
+```{r setup, echo=F}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+## How to summarize data
+
+### One variable
+
+| Type                 | Approach                      |
+|----------------------|-------------------------------|
+| Continuous           | Mean, median                  |
+| Categorical (factor) | table(), prop.table()         |
+| Dichotomous (0 or 1) | mean(), table(), prop.table() |
+| Dichotomous (factor) | table(), prop.table()         |
+
+### Two variables 
+
+|                      | Variable 1 |                      |                      |
+|----------------------|------------|----------------------|----------------------|
+|                      | Continuous | Categorical (factor) | Dichotomous (0 or 1) |
+| Continuous           | visualize  | tapply()             | tapply()             |
+| Categorical (factor) | tapply()   | table()              | table()              |
+| Dichotomous (0 or 1) | tapply()   | table()              | table()              |
+
+## Tables of proportions
+
+Consider the following data
+
+```{r}
+major <- c("GOVT", "ECON", "SOCY","GOVT", "ECON", "SOCY",
+		   "GOVT", "ECON", "SOCY","GOVT", "ECON", "SOCY")
+your.future <- as.data.frame(major)
+your.future$employed <- rbinom(12, 1, .5)
+your.future$honors <- rep(c("Yes", "No"), 6)
+
+```
+
+1. Generate a table (major by employed):
+
+```{r}
+
+```
+
+2. Now, summarize the relationship between employment and honors
+
+```{r}
+
+```
+
+3. Convert this to a table of proportions that computes the proportion in each cell.
+
+```{r}
+
+```
+
+4. Convert this to a table of proportions that summarizes employment by each value of honors.
+
+```{r}
+
+```
+
+
+5. Convert this to a table of proportions that summarizes honors by each value of employment.
+
+```{r}
+
+```
+
+##  Missing data
+
+Respondents (much to the ire of researchers) have the right to refuse to answer any question on a survey.  This means that we often have missing values for some variables for some respondents.  In R missing values are recorded with a value of *NA*.  Because R likes to torture us, we have to explicitly tell it how to complete a calculation when a value is missing.
+
+1. Try to compute the mean of the following vector
+```{r}
+eggs.laid <- c(NA, NA, NA, 5, 4, 3, 3)
+```
+
+2. R doesn't know how to compute the mean of nothing, so it will return *NA* as the answer.  This is not informative.  To get the actual mean of the values (excluding the missing values), we add an additional argument to functions: *na.rm=T*.  This tells R to remove NAs before completing a calculation.  Try to compute the mean of eggs.laid again, with this argument
+```{r}
+
+```
+
+3. Dealing with NAs is slightly more complex when using tapply().  Since we do not include parentheses in the function we wish to use when calling tapply(), we supply NA.RM=T as an additional argument to tapply().  Using tapply() compute the mean proportion of violent experiences with the ISAF by district.
+```{r}
+afghan <- read.csv("afghan.csv")
+
+```
+
+4. Finally, we cannot evaluate logical tests with NA values.  Try:
+```{r}
+length(afghan$income[afghan$income == NA])
+```
+
+To evaluate if something is NA we use the *is.na()* function
+```{r}
+
+```
+
+
+## Measuring Civilian Victimization during Wartime
+
+After the September 11 attacks, the United States and its allies invaded Afghanistan with the goal of dismantling al-Qaeda, which had been operating there under the protection of the Taliban government. In 2003, the North Atlantic Treaty Organization (NATO) became involved in this conflict and sent their troops under the name of the International Security Assistance Force (ISAF). To wage this war against the Taliban insurgency, the ISAF engaged in the “Hearts and Minds” campaign that combines economic assistance, service delivery, and protection in order to win support of civilians. For the success of such a campaign, it is essential to measure and understand civilians’ experiences and sentiments during this war. However, measuring the experiences and opinions of civilians during wartime is a challenging task because of harsh security conditions, posing potential threats to interviewers and respondents. This means that respondents may inaccurately answer survey questions in order to avoid socially undesirable responses.
+
+Questions: Who caused violent experiences (ISAF or Taliban)?  How many?  Relationships with other measurable variables.
+
+Problems:
+* Cannot directly measure violence
+* Cannot interview women
+* Cannot survey everyone (a census)
+
+
+| Name                | Description                                                          |
+|---------------------|----------------------------------------------------------------------|
+| province            | province where a respondent lives                                    |
+| district            | district where a respondent lives                                    |
+| village.id          | the ID of the village where a respondent lives                       |
+| age                 | age of a respondent                                                  |
+| educ.years          | years of education of a respondent                                   |
+| employed            | whether a respondent is employed                                     |
+| income              | monthly income of a respondent (5 levels)                            |
+| violent.exp.ISAF    | whether a respondent experienced violence by ISAF                    |
+| violent.exp.taliban | whether a respondent experienced violence by Taliban                 |
+| list.group          | randomly assigned group for list experiment (control, ISAF, Taliban) |
+| list.response       | response to the list experiment question (0 - 4)                     |
+
+1. Generate means, medians and a measure of spread for: age and educ.years
+```{r}
+
+```
+
+2. How many people reported violence from both the ISAF and the Taliban?
+```{r}
+
+```
+
+3. We are often interested in computing proportions when summarizing data.  We can use the *prop.table()* function to generate a table of proportions.  Remember, prop.table() expects a table variable as input
+
+Compute a table of proportions for the violent.exp.ISAF and violent.exp.taliban variables
+```{r}
+
+```
+
+4. Repeat this task, but separating those who are employed and unemployed.
+```{r}
+
+```
+
+## Homework 3
+
+
+## Evaluation
+
+1. On a scale ranging between 1 (Too Hard) and 10 (Too Easy), how was today's class: 
+2. What was the easiest thing to understand?
+3. What was the most difficult thing to understand?
+4. How long did you spend on the assignment outside of class?
