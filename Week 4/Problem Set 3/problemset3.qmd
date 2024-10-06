@@ -1,0 +1,175 @@
+---
+title: "Homework 3"
+author: ""
+format:
+  pdf
+---
+
+# Efficacy of Small-class Size in Early Education
+
+The STAR (Student-Teacher Achievement Ratio) Project is a four year longitudinal study examining the effect of class size in early grade levels on educational performance and personal development. A longitudinal study is one in which the same participants are followed over time. This particular study lasted from 1985 to 1989 involved 11,601 students. During the four years of the study, students were randomly assigned to small classes, regular-sized classes, or regular-sized classes with an aid. In all, the experiment cost around $12 million. Even though the program stopped in 1989 after the first kindergarten class in the program finished third grade, collection of various measurements (e.g., performance on tests in eighth grade, overall high school GPA) continued through the end of participants’ high school attendance.
+
+Note that there are a fair amount of missing values in this data set. For example, missing values arise because some students left a STAR school before third grade or did not enter a STAR school until first grade.
+
+## Loading the data
+
+```{r}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+star <- read.csv("STAR.csv")
+```
+
+| Name       | Description                                                                                     |
+|------------|-------------------------------------------------------------------------------------------------|
+| race       | student's race (White = 1, Black = 2, Asian = 3, Hispanic = 4, Native American = 5, Others = 6) |
+| classtype  | type of kindergarten class (small = 1, regular = 2, regular with aid = 3)                       |
+| g4math     | total scaled score for math portion of fourth grade standardized test                           |
+| g4reading  | total scaled score for reading portion of fourth grade standardized test                        |
+| yearssmall | number of years in small classes                                                                |
+| hsgrad     | high school graduation (did graduate = 1, did not graduate = 0)                                 |
+
+## Questions
+
+_Be sure to round all results to two decimal places_
+
+### Question 1
+1.1.  Create a new variable called `kinder` in the data frame. This variable should recode `classtype` by changing integer values to their corresponding informative labels (e.g., change 1 to "small", 2 to "regular", and 3 to "regular w/aid"). 
+
+```{r}
+star$kinder <- NA
+
+star$kinder <- as.factor(...)
+
+```
+
+1.2. Recode the `race` variable into a new variable with five levels ("white", "black", "hispanic", "asian" and "other"), where "other" is a combination of the "Native American" and "Others" categories. Note: You are not creating a new variable.  Rather, you are overwriting the original `race` variable with a new factor variable.  
+
+```{r}
+
+```
+
+### Question 2
+
+2.1. Compare the mean performance on fourth grade reading tests (`g4reading`) between those students assigned to small classes and those assigned to regular-sized classes. Print the difference in means. Be sure to remove missing values when making the calculation. Hint: na.rm = TRUE can be added to the `mean` function to do this.
+
+```{r}
+
+```
+Answer: 
+
+2.2. Describe what you observed in 2.1.
+Answer: 
+
+2.3. Now compute the difference in the mean performance on fourth grade math tests (`g4math`) between each group.  
+
+```{r}
+
+```
+Answer: 
+
+
+2.4. Describe what you observed in 2.3.
+Answer:
+
+2.5. Compute the standard deviation for math scores for the regular group and for the small group.  Print the results.
+
+```{r}
+
+```
+Answer: 
+
+2.6. Describe how the differences in mean performance (the values calculated in 2.1 and 2.3) compare to the standard deviations in performance for reading and math tests. What does this comparison suggest about the effect of small class sizes on test performance?
+
+Answer: 
+
+### Question 3
+
+3.1. Instead of comparing just average scores of math tests between those students assigned to small classes and those assigned to regular-sized classes, we might be interested in comparing high scores between the two groups or low scores between the two groups.  To do this, split the math scores into quartiles showing the 25th (low) and 75th (high) percentiles for small classes and for regular-sized classes.  
+
+```{r}
+
+```
+Answer: 
+
+3.2. Subtract the high and low math scores of the regular-sized classes from the high and low math scores of the small class sizes.  
+
+```{r}
+
+
+
+```
+Answer: 
+
+3.3. These are examples of quantile treatment effects. Does this result add anything to the analysis based on mean in the previous question or are the effects similar?
+
+Answer: 
+
+### Question 4
+
+4.1. Some students were in small classes for all four years that the STAR program ran. Others were assigned to small classes for only one year and had either regular classes or regular classes with an aid for the rest. Hence, there are 15 of these categories of students (3 categories for `kinder` times 5 categories for `yearssmall`).  Create a contingency table of proportions using the `kinder` and `yearssmall` variables. What is the proportion of students who were in small classes in `yearssmall` = 4?
+
+```{r}
+
+```
+Answer: 
+
+4.2. Does participation in more years of small classes make a greater difference in test scores? Compare the average math test scores across students who spent different numbers of years in small classes. So, compute a mean reading score for each level of `yearssmall`. Then compute a mean math score for each level of `yearssmall`. What is the mean math score for those with 1 year of small classes?
+
+```{r}
+ 
+```
+Answer: 
+
+4.3. Describe what you observe from 4.1 and 4.2.
+
+Answer: 
+
+### Question 5
+
+5.1. Did the STAR program reduce the racial gap in achievement? First split the dataset into two: one for white students and one for minority students.  Next compute the average reading test score for white and minority students in small kindergarten classes.  Do the same for students in regular kindergarten classes with no aid. Show your results. (Define minority students as including blacks, asians and hispanics, but not "others.")  You should have four means.  Next, subtract the mean for white and minority studys in small classes.  Repeat this for regular classes with no aide.
+
+```{r}
+# Subset star into white and minority groups.
+
+# Racial gap in small classes
+
+# Racial gap in regular classes
+
+```
+Answer: 
+
+5.2.  Now do the same with math scores. 
+
+```{r}
+
+```
+Answer: 
+
+5.3. Give a brief substantive interpretation of the results of your analysis.
+
+Answer: 
+
+### Question 6
+
+6.1. Were there long term effects on education outcomes as a result of class size? Compute high school graduation rates for each of the class types (small, regular, and regular with aid). tapply() might be helpful.
+
+```{r}
+
+```
+Answer: 
+
+6.2. Do graduation rates differ by the number of years spent in small classes? Compute graduation rates for each number of years spent in small classes (5 possible).
+
+```{r}
+
+```
+Answer: 
+
+6.3.  Did the STAR program change the racial gap between white and minority students’ graduation rates? Compute the difference in graduation rates for whites and minorities by the years they were in small classes.
+
+```{r}
+
+```
+Answer: 
