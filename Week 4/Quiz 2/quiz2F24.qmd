@@ -1,0 +1,92 @@
+---
+title: "Quiz 2"
+author: ""
+format:
+  pdf_document: default
+---
+
+```{r setup, echo=F}
+library(knitr)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+Across industrialized countries, it is a well-studied phenomenon that childless women are paid more on average than mothers. In this exercise, we use survey data to investigate and measure the wage gap between women with children and childless women.
+
+The exercise is based on: Wei-hsin Yu and Janet Chen-Lan Kuo. 2017. [The Motherhood Wage Penalty by Work Conditions: How Do Occupational Characteristics Hinder or Empower Mothers?](https://doi.org/10.1177/0003122417712729)" *American Sociological Review* 82(4): 744-769.
+
+This paper uses a type of data known as 'panel data.' Panel data consist of 
+observations on the same people over time. In this example, we are going to 
+analyze the same women over multiple years. When analyzing panel data, each 
+time period is referred to as a *wave*, so here each year is a wave.
+
+Data: 
+
+| Name              | Description                                                                 |
+|-------------------|-----------------------------------------------------------------------------|
+| `PUBID`           | ID of woman                                                                 |
+| `year`            | Year of observation                                                         |
+| `wage`            | Hourly wage, in cents                                                       |
+| `numChildren`     | Number of children that the woman has (in this wave)                        |
+| `age`             | Age in years                                                                |
+| `region`          | Name of region (North East = 1, North Central = 2, South = 3, West = 4)     |
+| `urban`           | Geographical classification (urban = 1, otherwise = 0)                      |
+| `marstat`         | Marital status                                                              |
+| `educ`            | Level of education                                                          |
+| `school`          | School enrollment (enrolled = `TRUE`, otherwise = `FALSE`)                  |
+| `experience`      | Experience since 14 years old, in days                                      |
+| `tenure`          | Current job tenure, in years                                                |
+| `tenure2`         | Current job tenure in years, squared                                        |
+| `fullTime`        | Employment status (employed full-time = `TRUE`, otherwise = `FALSE`)        |
+| `firmSize`        | Size of the firm                                                            |
+| `multipleLocations`| Multiple locations indicator (firm with multiple locations = 1, otherwise = 0)|
+| `unionized`       | Job unionization status (job is unionized = 0, otherwise = 1)               |
+| `industry`        | Job's industry type                                                         |
+| `hazardous`       | Hazard measure for the job (between 1 and 2)                                |
+| `regularity`      | Regularity measure for the job (between 1 and 5)                            |
+
+
+```{r}
+data <- read.csv("motherhood.csv")
+```
+
+**Round all answers to two decimal places**
+
+## Question 1
+
+The column marstat records if a woman is `Married`, `Cohabitting`, or in `No romantic union.` Subset the data to only those women who are married and in unionized jobs. Compute the average wage for each year in this subset.  What is the absolute difference between the largest and smallest average yearly wage?
+
+```{r}
+
+```
+
+## Question 2
+Subset the data to include only individuals who are over 32 years old, located in urban areas, and who have more experience than the median level of experience across the entire dataset.  What is the difference in wages for women with and without kids?
+
+```{r}
+
+```
+
+## Question 3
+
+What is the standard deviation for the wages of women with one or more children in the full dataset?
+
+```{r}
+
+```
+
+## Question 4
+
+Now look at the full dataset.  What is the average difference in wages for a woman with seven children and a woman with one child?
+
+```{r}
+
+```
+
+## Question 5
+
+Look only at women who have a college degree (`educ` = "4.College") and who work in health care (`industry` = "Health Care"). What is the average difference in wages for a woman with four children and a woman with one child? 
+
+```{r}
+
+```
