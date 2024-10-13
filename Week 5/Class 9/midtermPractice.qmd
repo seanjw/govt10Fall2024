@@ -1,0 +1,61 @@
+---
+title: "Poverty and Economic Decision-Making"
+format: pdf
+---
+
+Do changes in one's financial circumstances affect one's decision-making process and cognitive capacity? In an experimental study, researchers randomly selected a group of US respondents to be surveyed before their payday and another group to be surveyed after their payday. Under this design, the respondents of the `Before Payday` group are more likely to be financially strained than those of the `After Payday` group.  The researchers were interested in investigating whether or not changes in people's financial circumstances affect their decision making and cognitive performance.  Other researchers have found that scarcity induce an additional mental load that impedes cognitive capacity.  This exercise is based on:
+
+Carvalho, Leandro S., Meier, Stephen, and Wang, Stephanie W. (2016). "[Poverty and economic decision-making: Evidence from changes in financial resources at payday.](http://dx.doi.org/10.1257/aer.20140481)" *American Economic Review*, Vol. 106, No. 2, pp. 260-284. 
+
+In this study, the researchers administered a number of decision-making and cognitive performance tasks to the `Before Payday` and `After Payday` groups. We focus on the *numerical stroop task*, which measures cognitive control.  In general, taking more time to complete this task indicates less cognitive control and reduced cognitive ability. They also measured the amount of cash the respondents have, the amount in their checking and saving accounts, and the amount of money spent.  The data set is in the CSV file `poverty.csv`. The names and descriptions of variables are given below:
+
+ Name                         Description
+ ---------------------------- ---------------------------------------------------------
+  `treatment`                 Treatment conditions: `Before Payday` and `After Payday`
+  `cash`                      Amount of cash respondent has on hand
+  `accts_amt`                 Amount in checking and saving accounts
+  `stroop_time`               Log-transformed average response time for cognitive stroop test
+  `income_less20k`            Binary variable: `1` if respondent earns less than 20k a year and `0` otherwise
+
+```{r}
+poverty <- read.csv("poverty.csv")
+```
+
+ 
+## Question 1
+
+1.1. Let's examine the primary outcome of interest for this study--the effect of a change in financial situation (in this case, getting paid on payday) on economic decision-making and cognitive performance.  Calculate the average treatment effect (`Before Payday` - `After Payday`) for the `stroop_time` variable (a log-transformed variable of the average response time for the stroop cognitive test). 
+
+```{r}
+
+```
+
+## Question 2
+
+2.1. Test if the `Before Payday` versus `After Payday` treatment created measurable differences in financial circumstances. Compute the ATE for the `cash` variable.
+
+```{r}
+
+```
+
+2.2. Repeat this analysis for the `accts_amt` variable.
+
+```{r}
+
+```
+
+## Question 3
+
+3.1. Does the effect you found in 2.1 depend on income?  Compute the ATE for those who make less than 20k.
+
+```{r}
+
+```
+
+3.2. Compute the ATE for those who make 20k or more.  
+
+```{r}
+
+```
+
+
