@@ -1,0 +1,129 @@
+---
+title: "Midterm"
+author: ""
+format:
+  pdf_document: default
+---
+```{r setup, echo=F}
+library(knitr)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+In the United States, political fundraising is crucial to the success and eventual election of politicians. Female politicians, however, report more fundraising difficulties than their male counterparts. Female politicians are also underrepresented in state legislatures across the country. In this exercise, we investigate the presence of potential gender inequalities in campaign finance.
+
+This exercise is in part based on: Barber, Michael, Daniel Butler, and Jessica Preece. 2016. "Gender Inequalities in Campaign Finance." Quarterly Journal of Political Science 11(2): 219-248.
+
+In this paper, the authors attempt to estimate whether female state legislative incumbents have more trouble fundraising than do male legislative incumbents. Observations consist of information on all U.S. state legislative races in which a male and female candidate ran against each other. The data include their winning margin and their current-cycle fundraising. To mitigate concerns about omitted variable bias (women may run in districts that are fundamentally different than districts in which men are the incumbents), the researchers use a variation of a regression discontinuity design (RDD). As with studies of the incumbency effect, the authors argue that those who barely won last cycle won at random, given the closeness of the previous election.
+
+| Name                     | Description                                                                      |
+|--------------------------|----------------------------------------------------------------------------------|
+| `bonica.rid`             | Candidate ID number                                                              |
+| `cycle`                  | Year in which the election was held                                              |
+| `name`                   | Legislator's name                                                                |
+| `cand.gender`            | Legislator's gender                                                              |
+| `Party`                  | Party affiliation (Democrat = 100, Republican = 200)                             |
+| `seat`                   | Whether the legislator ran for upper (state:upper) or lower house (state:lower)  |
+| `running.variable`       | Male candidate vote share minus female candidate vote share in previous election |
+| `total.raised.candidate` | Total funding raised by legislator after winning election                        |
+| `male.money`             | Total raised from male donors                                                    |
+| `female.money`           | Total raised from female donors                                                  |
+| `share.district.total`   | Proportion of total district funding raised by the incumbent                     |
+| `pac.money`              | Total amount raised from PACs                                                    |
+| `individual.money `      | Total amount raised from individuals                                             |
+| `male.winner`            | Did the male candidate win (1) or lose (0)                                       |
+
+**NOTE: THERE ARE MORE COLUMNS IN THE DATAFRAME THAN DESCRIBED ABOVE**
+
+
+## Data 
+
+```{r}
+campaign <- read.csv("campaign.csv")
+```
+
+
+**Note: You must round all numeric results to two decimal places**
+
+## Question 1
+
+1. What *proportion* of candidates were both female and Democrats?
+
+```{r}
+
+```
+
+## Question 2
+
+In which year did male candidates raise the most money from female donors?
+
+```{r}
+
+```
+
+
+## Question 3
+
+On average, what is the difference in total money raised from male and female donors (subtract females from males) for Republicans running for a seat in `state:lower`?
+
+```{r}
+
+```
+
+## Question 4
+
+On average, how much money did candidates raise after winning election?
+
+```{r}
+
+```
+
+## Question 5
+
+Compute the IQR for the total amount of money raised after winning election.  Only include male candidates.
+
+```{r}
+
+```
+
+## Question 6
+
+Compute the absolute average difference in `share.district.total` for men and and for women.  Also compute the absolute average difference in `share.district.total` for Democrats and for Republicans.  Report the numerical value for the largest of these two differences.
+
+```{r}
+
+```
+
+## Question 7
+
+Which candidate (report the value of `bonica.rid`) raised the most money from female donors? Note there might be NAs.
+
+```{r}
+
+```
+
+## Question 8 
+
+PACs (Political Action Committees) are groups that support candidates.  How much more (or less) money in total did *ALL* female candidates raise from PACs compared to *ALL* male candidates?  Report the absolute value of the difference.
+
+```{r}
+
+```
+
+
+## Question 9
+
+Which state had the most female Republicans run for office? Report the state abbreviation.
+
+```{r}
+
+```
+
+## Quesiton 10
+
+On average, how much more did males who won election raise from PACs compared to individual donors?  Report the absolute mean difference.
+
+```{r}
+
+```
+
