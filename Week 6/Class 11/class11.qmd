@@ -1,0 +1,75 @@
+---
+title: "Class 11"
+author: "Sean Westwood"
+format:
+  pdf
+---
+```{r setup, echo=F}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+## Plan:
+* Linear regression modeling
+* Ordinary Least squares
+
+## Fitting a regression model with R: Predicting Elections Using Betting Markets and Linear Models
+
+Can betting markets predict election outcomes? In particular, we analyze data for the 2008 and 2012 US presidential elections from the online betting company, Intrade.  At Intrade, people trade contracts such as 'Obama to win the electoral votes of Florida.'  Each contract's market price fluctuates based on its sales.  
+
+Some argue that the market can aggregate available information efficiently.  Let's test this *efficient market hypothesis* by analyzing the market prices of contracts for Democratic and Republican nominees' victories in each state.
+
+```{r}
+pres08 <- read.csv("pres08.csv")
+intrade08 <- read.csv("intrade08.csv")
+```
+
+Intrade08
+
+| Name      | Description                                                         |
+|-----------|---------------------------------------------------------------------|
+| day       | Date of the session                                                 |
+| statename | Full name of each state (including District of Columbia in 2008)    |
+| state     | Abbreviation of each state (including District of Columbia in 2008) |
+| PriceD    | Closing price (predicted vote share) of Democratic Nominee's market |
+| PriceR    | Closing price (predicted vote share) of Republican Nominee's market |
+| VolumeD   | Total session trades of Democratic Party Nominee's market           |
+| VolumeR   | Total session trades of Republican Party Nominee's market           |
+
+Each row represents daily trading information about the contracts for either the Democratic or Republican Party nominee's victory in a particular state. 
+
+1. Merge intrade08 with pres08 using *merge()* Hint: what variable do they have in common?
+
+```{r}
+
+```
+
+2. Compute a days to election variable, an intrade margin, and the actual election margin.
+
+```{r}
+
+```
+
+3. Subset to just the day before the election
+
+```{r}
+
+```
+
+4. Fit a linear regression model using *lm()* with the actual margin as the dependent measure and the intrade margin as the predictor
+
+```{r}
+
+```
+
+5. Interpret the coefficient for the intrade margin
+
+
+## Evaluation
+
+1. On a scale ranging between 1 (Too Hard) and 10 (Too Easy), how was today's class: 
+2. What was the easiest thing to understand?
+3. What was the most difficult thing to understand?
+4. How long did you spend on the assignment outside of class?

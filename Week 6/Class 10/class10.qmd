@@ -1,0 +1,57 @@
+---
+title: "Class 7"
+author: "Sean Westwood"
+format:
+  pdf
+---
+
+```{r setup, echo=F}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+```{r}
+afghan <- read.csv("afghan.csv")
+```
+
+## Regression practice
+
+1. Fit a linear regression model with employed as the dependent variable and violent.exp.taliban as the single predictor. What is the coefficient for violent.exp.taliban, and what does it suggest about the effect of Taliban violence experience on employment?
+
+```{r}
+
+```
+
+2. Fit a linear regression model with educ.years as the dependent variable and violent.exp.ISAF as the single predictor. Is the relationship statistically significant at the 0.05 level? Report the p-value for the coefficient.
+
+```{r}
+
+```
+
+3. Create a binary variable young that takes a value of 1 if age is less than or equal to 30, and 0 otherwise. Fit a linear regression model with violent.exp.ISAF as the dependent variable and young as the predictor. What is the coefficient for young, and what does it imply about the effect of being young on violent.exp.ISAF?
+
+```{r}
+
+```
+
+4. Create a binary variable high_education that takes a value of 1 if educ.years is greater than or equal to 10, and 0 otherwise. Fit a linear regression model with employed as the dependent variable and high_education as the predictor. What is the coefficient for high_education, and what does it imply about the effect of higher education on employment status?
+
+```{r}
+
+```
+
+5.  Create a binary variable middle_aged that takes a value of 1 if age is between 31 and 50 (inclusive) and 0 otherwise. Fit a linear regression model with employed as the dependent variable and middle_aged as the predictor. What is the coefficient for middle_aged, and what does it imply about the relationship between being middle-aged and employment status?
+
+```{r}
+
+```
+
+
+## Evaluation
+
+1. On a scale ranging between 1 (Too Hard) and 10 (Too Easy), how was today's class: 
+2. What was the easiest thing to understand?
+3. What was the most difficult thing to understand?
+4. How long did you spend on the assignment outside of class?

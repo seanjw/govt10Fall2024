@@ -1,0 +1,112 @@
+---
+title: "Analyzing Natural Disasters"
+format: 
+  pdf
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+In this exercise, we will analyze the relationship between various factors related to natural disasters and their economic impact. The dataset `natural_disasters_2024.csv` contains information about different natural disasters recorded globally, including their type, severity, and the economic damage they caused. Understanding these relationships can provide insights into which factors are most predictive of economic losses, aiding in disaster preparedness and response planning.
+
+### Dataset Overview
+
+The dataset `natural_disasters_2024.csv` contains the following variables:
+
+| Name               | Description                                                         |
+|--------------------|---------------------------------------------------------------------|
+| `Disaster_Type`    | The type of disaster (e.g., hurricane, earthquake, flood).          |
+| `Magnitude`        | A severity score (1-10) indicating the intensity of the disaster.   |
+| `Location`         | The area affected by the disaster.                                  |
+| `Economic_Loss`    | The estimated economic damage caused by the disaster (in USD).      |
+| `Fatalities`       | The number of casualties resulting from the disaster.               |
+| `Date`             | The date when the disaster occurred.                                |
+
+```{r}
+natural_disasters <- read.csv("natural_disasters_2024.csv")
+options(scipen = 999)
+```
+
+
+1. Calculate the total economic loss for each disaster type across all locations. Identify the disaster type with the highest total economic loss, then provide the amount of the loss.
+
+```{r}
+
+```
+
+Answer: 
+
+2. For each location, calculate the number of disasters recorded and the average fatalities. Identify the location with the highest number of disasters and the one with the highest average fatalities.
+
+```{r}
+
+```
+
+Answer (number of disasters): 
+Answer (number of fatalities): 
+
+3. Fit a multiple linear regression model with Economic_Loss as the dependent variable and Fatalities as the independent variable. Report the coefficient for Fatalities.
+
+```{r}
+
+```
+
+Answer: 
+
+4. For each disaster type, calculate the total economic loss in the location with the highest overall fatalities. Which disaster type contributed the most to the economic loss in that location?
+
+```{r}
+
+```
+
+Answer: 
+
+5. Calculate the range of economic losses (maximum - minimum) for each disaster type and location combination. Which combination has the greatest range?
+
+```{r}
+
+```
+
+Answer:
+
+6. For each disaster type, calculate the total number of disasters recorded in the dataset and the average fatalities per event. Report the average fatalities, for the disaster type with the highest average fatalities.
+
+```{r}
+
+```
+
+Answer: 
+
+7. For each location, calculate the number of “High Impact” disasters (economic loss above the median). Identify the location with the most “High Impact” disasters.
+
+```{r}
+
+```
+
+Answer: 
+
+8. Fit a linear regression model with Fatalities as the dependent variable and Magnitude as the single predictor. Is the relationship statistically significant at the 0.05 level? Provide the p-value for the coefficient.
+
+```{r}
+
+```
+Answer: 
+
+9. Which month had the most fatalities?
+
+```{r}
+
+```
+Answer: 
+
+10. Find the day of the month with the highest total fatalities. What was the total number of fatalities on that day?
+
+```{r}
+
+```
+Answer: 
+
