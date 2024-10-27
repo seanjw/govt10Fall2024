@@ -1,0 +1,99 @@
+---
+title: "Class 14"
+author: "Sean Westwood"
+format:
+  pdf
+---
+```{r setup, echo=F}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+### Plan:
+* Multivariate Regression
+* Regression and causation
+
+# Multivariate Regression
+
+# Regression and causation: 
+
+Randomization of Treatments Enables Causal Interpretation
+
+Returning to the GOTV experiment from chapter 2:
+```{r}
+social <- read.csv("social.csv")
+```
+
+| Name        | Description                                                                      |
+|-------------|----------------------------------------------------------------------------------|
+| hhsize      | household size of voter                                                          |
+| messages    | GOTV messages voter received (Civic Duty, Control, Neighbors, Hawthorne)         |
+| sex         | sex of voter (female or male)                                                    |
+| yearofbirth | year of birth of voter                                                           |
+| primary2004 | whether a voter voted in the 2004 Primary election (1=voted, 0=abstained)        |
+| primary2006 | whether a voter turned out in the 2006 Primary election (1=voted, 0=abstained)   |
+
+1.1. Let's start by estimating the effect of sex and primary voting in 2004 on turnout in the 2006 primary using a regression model.
+
+```{r}
+
+```
+
+1.2. What proportion of women who voted in the 2004 primary would we predict would in the 2006 primary?
+```{r}
+
+```
+
+1.3. What proportion of men who voted in the 2004 primary would we predict would in the 2006 primary?
+
+```{r}
+
+```
+
+1.4. Estimate the effects of the message treatments on voting in the 2006 primary. Also save this model to `model.`
+
+```{r}
+
+```
+
+1.5. What is the reference category? Does this make sense?
+
+To change reference categories we use the relevel() function.  It expects two arguments: the variable we are releveling (converted to a factor) and the value of the category we want to set as the new reference.
+
+For comparison let's run the following model:
+
+```{r}
+lm(primary2006 ~ sex, data = social)
+```
+
+For example, if we wanted to set the reference level for `sex` to "male" we would use the following code.  To show how this changes the output let's run the model from above again.
+
+```{r}
+social$sex <- relevel(as.factor(social$sex), ref = "male")
+lm(primary2006 ~ sex+messages, data = social)
+```
+
+1.6. Relevel `messages` so that "control" is the reference category. Re-run the model from 1.4.  Compare the results to what we got from 1.4.
+```{r}
+
+```
+
+1.7. What is the estiamted turnout in the 2006 primary for those in the Hawthorne treatment?
+```{r}
+
+```
+
+1.8. What prediction would we make for someone who is a male in a household of 5 who was in the control condition?
+
+```{r}
+
+```
+
+## Evaluation
+
+1. On a scale ranging between 1 (Too Hard) and 10 (Too Easy), how was today's class: 
+2. What was the easiest thing to understand?
+3. What was the most difficult thing to understand?
+4. How long did you spend on the assignment outside of class?

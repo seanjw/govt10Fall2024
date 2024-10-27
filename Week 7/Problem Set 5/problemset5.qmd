@@ -1,0 +1,142 @@
+---
+title: "Problemset 5"
+format: 
+  pdf
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+In this exercise, we will analyze the relationship between various demographic traits and pro-feminist voting behavior among circuit court judges. In a recent paper, Adam N. Glynn and Maya Sen argue that having a female child causes circuit court judges to make more pro-feminist decisions. The paper can be found at: 
+
+Glynn, Adam N., and Maya Sen. (2015). ["Identifying Judicial Empathy: Does Having Daughters Cause Judges to Rule for Women's Issues?."](https://doi.org/10.1111/ajps.12118) *American Journal of Political Science* Vol. 59, No. 1, pp. 37--54.
+
+The dataset `dbj.csv` contains the following variables about individual judges:
+
+| Name               | Description                                                         |
+|--------------------|---------------------------------------------------------------------|
+| `name`             | The judge’s name                                                    |
+| `child`            | The number of children each judge has.                              |
+| `circuit.1`        | Which federal circuit the judge serves in.                          |
+| `girls`            | The number of female children the judge has.                        |
+| `progressive.vote` | The proportion of the judge’s votes on women’s issues which        |
+|                    | were decided in a pro-feminist direction.                           |
+| `race`             | The judge’s race (`1` = white, `2` = African-American,              |
+|                    | `3` = Hispanic, `4` = Asian-American).                              |
+| `religion`         | The judge’s religion (`1` = Unitarian, `2` = Episcopalian,          |
+|                    | `3` = Baptist, `4` = Catholic, `5` = Jewish, `7` = Presbyterian,    |
+|                    | `8` = Protestant, `9` = Congregationalist, `10` = Methodist,        |
+|                    | `11` = Church of Christ, `16` = Baha'i, `17` = Mormon,              |
+|                    | `21` = Anglican, `24` = Lutheran, `99` = unknown).                   |
+| `republican`       | Takes a value of `1` if the judge was appointed by a Republican     |
+|                    | president, `0` otherwise. Used as a proxy for the judge’s party.    |
+| `sons`             | The number of male children the judge has.                          |
+| `woman`            | Takes a value of `1` if the judge is a woman, `0` otherwise.         |
+| `yearb`            | The year the judge was born.                                        |
+
+ 
+```{r}
+children <- read.csv("children.csv")
+```
+
+*Round all results to two decimal places*
+
+## Question 1
+
+1.1. What proportion of the justices in the dataset are male republicans?
+
+```{r}
+
+```
+Answer:
+
+1.2. Opposition to abortion is often high among those who identify as Baptist or Catholic.  How much less on average do justices who follow these religions support women's issues less often than the average for all other justices?  
+
+```{r}
+
+```
+
+Answer:
+
+1.3. We want to describe the demographics in this dataset.  What proportion of justices are male?  How many sons does the average justice have?  How many daughters does the average justice have?  When was the average justice born?  What proportion of justices are non-Christian (Jewish or Baha'i)?
+
+```{r}
+
+```
+Proportion of male justices:
+Average number of sons: 
+Average number of daughters: 
+Average birth year of justices:  
+Proportion of non-Christian justices: 
+
+1.4. What is the mean difference in support for women's issues for Democratic and Republican justices?
+
+```{r}
+
+```
+Answer: 
+
+1.5.  How many justices always support progressive outcomes for women's issues and how many always oppose the progressive outcome?
+
+```{r}
+
+```
+Number of justices who always support progressive outcomes: 
+Number of justices who always oppose progressive outcomes:  
+
+## Question 2
+
+2.1. Create a new binary variable which takes a value of `1` if a judge has *at least* one child (that is, any children at all), `0` otherwise. Then, use this variable to answer the following questions. What is the difference in the proportion of Republicans and Democrats who have at least one child?
+
+```{r}
+
+```
+Answer: 
+
+2.2. How different, on average, are judges with children than judges without children on women's issues? 
+
+```{r}
+
+```
+Answer: 
+
+2.3. How different, on average, are Republican and Democratic parents votes on feminist issues?
+
+```{r}
+
+```
+Answer: 
+
+## Question 3
+
+3.1. What is the difference in the proportion of pro-feminist decisions between judges who have at least one daughter and those who do not have any?  
+```{r}
+
+```
+Answer:
+
+## Question 4
+
+4.1. Use a linear regression model with `progressive.vote` as the dependent variable, and `yearb`, `girls` and `republican` as independent variables. 
+
+```{r}
+
+```
+
+4.2. What proportion of votes in support of women's issues would we predict for a Democrat with 3 girls who was born in 1956.
+
+```{r}
+
+```
+Answer:
+
+4.3. What proportion of votes in support of women's issues would we predict for a Democrat with no girls who was born in 1987.
+
+```{r}
+
+```
+Answer:
