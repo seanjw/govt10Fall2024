@@ -1,0 +1,167 @@
+---
+title: "Homework 6"
+author: ""
+format:
+  pdf
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+ 
+
+In this exercise, we will consider the entry of the Fox News Channel into the television market in the late 1990s. This exercise is based on the following study: Stefano DellaVigna and Ethan Kaplan (2007). ["The Fox News Effect: Media Bias and Voting."](https://doi.org/10.1162/qjec.122.3.1187) *Quarterly Journal of Economics*, 122:3, pp.1187-1234.  
+  
+Note that due to the nature of negotiations between cable companies and television networks, adding a new channel to the line-up of a cable company may take a long time. For this reason, in contrast to what many people might expect, FoxNews was not able to enter conservative media markets first.  We will be looking at some of the differences between the towns that initially did not receive FoxNews, and those that did.  The data set is in the csv file `foxnews.csv`. It contains information for 10,126 towns across 28 states in the United States:
+
+## Loading the data
+
+```{r}
+foxnews <- read.csv("foxnews.csv", stringsAsFactors = FALSE)
+```
+
+|  Name                |       Description                                                     |
+|----------------------|-----------------------------------------------------------------------|
+|  `town`              | Town name                                                             |
+|  `state`             | State in which the town is located                                    |
+|  `subrf2000`         | Share of Fox News subscribers in 2000                                 |
+|  `gopvoteshare2000`  | Two-party vote share for the Republicans (2000 Presidential election) |
+|  `gopvoteshare1996`  | Two-party vote share for the Republicans (1996 Presidential election) |
+|  `gopvoteshare1992`  | Two-party vote share for the Republicans (1992 Presidential election) |
+|  `college1990`       | Proportion of population with a college degree in 1990                |
+|  `male1990`          | Proportion of male population in 1990                                 |
+|  `black1990`         | Proportion of black population in 1990                                |
+|  `hisp1990`          | Proportion of Hispanic population in 1990                             |
+|  `income1990`        | Median income in 1990                                                 |
+|  `logincome1990`     | Median income in 1990 on the logarithmic scale                        |
+
+## Question 1
+
+1.1. We first want to know about differences between towns with and without Fox News in 2000.  What is the mean difference in the median income for towns with and without Fox News?
+
+We need to create a variable called `foxified` that is equal to 1 when the value `subrf2000` is greater than 0 and that is equal to 0 when `subrf2000` is equal to zero or when `subrf2000` is NA.
+
+```{r}
+
+```
+Answer: 
+
+1.2.  What was the mean difference in the proportion of residents with college degrees in towns with and without Fox News?
+
+```{r}
+
+```
+Answer: 
+
+1.3. What was the mean difference in the proportion of non-white residents in towns with and without Fox News?
+
+```{r}
+
+```
+Answer: 
+
+1.4. Was there a difference in the proportion of citizens voting with the GOP in towns with and without Fox News? (Use the 1992 vote share)
+
+```{r}
+
+```
+Answer: 
+
+1.5. What does this tell us?
+
+
+## Question 2
+
+2.1. Now let's consider the relationship between exposure to Fox News and change in the GOP's vote share from 1996 to 2000.  Create a new variable that measures the difference between the Republican vote share in 2000 and in 1996 (call it foxnews$voteshare.diff).  Compute the relationship between this new variable and `subrf2000` using regression and `voteshare.diff` as the dependent measure.  What is the coefficient for foxified?
+
+```{r}
+
+```
+Answer: 
+
+2.2. Let's visualize this relationship.  Generate a scatter plot showing the relationship between the change in vote share calculate in the prior question and `subrf2000`.
+
+```{r}
+
+```
+
+## Question 3
+
+3.1. Now consider the effect of GOP vote share in 1992 on getting Fox News.  Using `gopvoteshare1992` as the independent measure and `subrf2000` as the dependent measure run a linear regression.  What is the coefficient for `gopvoteshare1992`
+
+```{r}
+
+```
+Answer:
+
+3.2. From this regression what would we expect for `subrf2000` if `gopvoteshare1992` is equal to .34
+
+```{r}
+
+```
+Answer:
+
+3.3. Let's add additional variables to the regression to account for other town-level differences.  Add: `college1990`, `male1990`, `black1990`, `hisp1990` and `logincome1990`.
+
+```{r}
+
+```
+
+3.4. Now compute the expected value of `subrf2000` for the following "town"
+
+| Variable         | Value |
+|------------------|-------|
+| gopvoteshare1992 | .76   |
+| college1990      | .15   |
+| male1990         | .51   |
+| black1990        | .01   |
+| hisp1990         | .05   |
+| logincome1990    | .93   |
+
+```{r}
+
+```
+Answer: 
+
+## Question 4
+
+4.1. Estimate the causal effect of Fox News on Republicans vote share. We will do this with a Difference-in-Differences estimator. Find the difference in mean `voteshare.diff` for towns with and without Fox News.
+
+
+```{r}
+
+```
+Answer: 
+
+## Question 5
+
+5.1. Perhaps just measuring if Fox News exists is not a sufficient measure of the effect of Fox News on votes.  Let's account for the level of exposure to Fox in each town.  Divide towns that received Fox News into three equal groups based on their share of Fox News subscribers.  Among the towns who received Fox News, the 'high exposure' group represents the group of towns whose share of subscribers is greater than or equal to the 66 percentile (among those who received Fox News).  In contrast, the 'low exposure' group represents the group of towns whose share of subscribers is less than or equal to the 33 percentile (among those who received Fox News).  
+
+Compare the change in vote share between those in the 'high exposure' group to the 'low exposure' group.
+
+```{r}
+
+```
+Answer: 
+
+5.2. Interpret your result
+
+
+
+## Question 6
+
+6.1. Consider the effect of having access to Fox News (as measured by `foxified`) on the Republican vote share for each state. Repeat the analysis done in Question 4 (comparing towns with and without Fox News) for each state, but do it for each state.  You will compute a state-specific estimate of the Fox News effect (remember not all states are in the dataset). In how many states was the difference positive?  In how many was it negative?
+  
+```{r}
+
+
+```
+Answer (positive): 
+Answer (negative):
+
+6.2. Interpret your results.
+
+

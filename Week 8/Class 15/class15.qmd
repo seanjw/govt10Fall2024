@@ -1,0 +1,80 @@
+---
+title: "Class 16"
+author: "Sean Westwood"
+format:
+  pdf
+
+---
+```{r setup, echo=F}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+### Plan:
+
+* Multivariate regression practice
+
+## Multivariate regression practice
+
+This exercise is based on Litschig, Stephan, and Kevin M Morrison. 2013. “[The Impact of Intergovernmental Transfers on Education Outcomes and Poverty Reduction.](http://dx.doi.org/10.1257/app.5.4.206)” *American Economic Journal: Applied Economics* 5(4): 206–40. 
+
+In this exercise, we estimate the effects of increased government spending on educational attainment, literacy, and poverty rates.
+
+Some scholars argue that government spending accomplishes very little in environments of high corruption and inequality. Others suggest that in such environments, accountability pressures and the large demand for public goods drive elites to respond.  To address this debate, we exploit the fact that until 1991, the formula for government transfers to individual Brazilian municipalities was determined in part by the municipality's population. This meant that municipalities with populations below the official cutoff did not receive additional revenue, while states above the cutoff did---regardless of the proximity of the population to the cutoff.
+
+```{r}
+transfer <- read.csv("transfer.csv")
+```
+
+
+| Name                Description                                 |        
+|-------------------|---------------------------------------------|
+| `pop82`           | Population in 1982                          |
+| `poverty80`       | Poverty rate of state in 1980               |
+| `poverty91`       | Poverty rate of state in 1991               |
+| `educ80`          | Average years education of state in 1980    |
+| `educ91`          | Average years education of state in 1991    |
+| `literate91`      | Literacy rate of state in 1991              |
+| `state`           | State                                       |
+| `region`          | Region                                      |
+| `id`              | Municipal ID                                |
+| `year`            | Year of measurement                         |
+ 
+## Question 1
+
+1.1.  In addition to computing the effect of cash transfers, it is also useful for us to understand the relationship between covariates and the key outcomes of interest.  Examine the relationship between literacy in 1991 (DV) and pop82 using linear regression.  Include educ91 andpoverty91 as controls in your model. (Note: these results are very small, so we will disable scientific notation by setting scipen in the options() function.)
+
+```{r}
+options(scipen=10000)
+```
+
+1.2. What is the expected level of literacy for a municipality at the median population in 1982, the average educational attainment in 1991, and the median poverty level in 1991?  
+
+```{r}
+
+```
+1.3. Repeat the analysis above for poverty in 1991 but only use `pop82` and `educ91` as predictors.  However, instead of computing means and medians, compute expected poverty in 1991 based on the first quartile of the two predictor variables.
+
+```{r}
+
+```
+
+1.4. Explore the interaction between education and poverty on literacy with a linear regression model.
+
+```{r}
+
+```
+
+1.5. Explore the interaction between pop82 and poverty on literacy with a linear regression model.
+
+```{r}
+
+```
+## Evaluation
+1. On a scale ranging between 1 (Too Hard) and 10 (Too Easy), how was today's class: 
+2. What was the easiest thing to understand?
+3. What was the most difficult thing to understand?
+4. How long did you spend on the assignment outside of class?
+
