@@ -1,0 +1,95 @@
+---
+title: "Class 17"
+author: "Sean Westwood"
+format:
+  pdf
+---
+```{r setup, echo=F}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+# Statistical significance: Confidence intervals
+
+## Calculating Confidence intervals
+
+```{r}
+transfer <- read.csv("transfer.csv")
+```
+
+Difference in means: t.test()
+
+```{r}
+t.test(transfer$literate91[transfer$pop82 <= median(transfer$pop82)],
+       transfer$literate91[transfer$pop82 >= median(transfer$pop82)])
+```
+
+Regression: confint() and summary()
+
+```{r}
+model <- lm(literate91~pop82, data = transfer)
+confint(model)
+summary(model)
+```
+
+# Example
+
+```{r}
+STAR <- read.csv("STAR.csv")
+```
+
+| Name       | Description                                                                                     |
+|------------|-------------------------------------------------------------------------------------------------|
+| race       | student's race (White = 1, Black = 2, Asian = 3, Hispanic = 4, Native American = 5, Others = 6) |
+| classtype  | type of kindergarten class (small = 1, regular = 2, regular with aid = 3)                       |
+| g4math     | total scaled score for math portion of fourth grade standardized test                           |
+| g4reading  | total scaled score for reading portion of fourth grade standardized test                        |
+| yearssmall | number of years in small classes                                                                |
+| hsgrad     | high school graduation (did graduate = 1, did not graduate = 0)                                 |
+
+1. We are interested in the difference between reading scores for the small and regular class sizes (excluding regular classes with aide)?  
+
+1.1. What might a hypothesis be?
+
+1.2. What might a null hypothesis be?
+
+1.3. Is the difference significant? 
+
+```{r}
+star_sub <- STAR[STAR$classtype == 1 | STAR$classtype == 2,]
+
+t.test(star_sub$g4reading[star_sub$classtype == 2], star_sub$g4reading[star_sub$classtype == 1])
+
+```
+
+
+2. Repeat question 1, but use math test scores.  Also combine regular and regular with aide classes. 
+
+2.1. What might a hypothesis be?
+
+2.2. What might a null hypothesis be?
+
+2.3. Is the difference significant? 
+```{r}
+
+```
+
+3.1. Draft a null hypothesis and a hypothesis for differences that might exist between class size and achievement among minorities. 
+
+3.2. Subset the data to just minorities (non-whites) and then run t.test comparing math scores for small classes with regular classes.  Can you reject the null?
+
+```{r}
+
+```
+
+3.3. Interpret your results.
+
+
+## Evaluation
+
+1. On a scale ranging between 1 (Too Hard) and 10 (Too Easy), how was today's class: 
+2. What was the easiest thing to understand?
+3. What was the most difficult thing to understand?
+4. How long did you spend on the assignment outside of class?

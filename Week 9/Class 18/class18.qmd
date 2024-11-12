@@ -1,0 +1,96 @@
+---
+title: "Class 18"
+author: "Sean Westwood"
+format:
+  pdf
+---
+```{r setup, echo=F}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+# Uncertainty and linear models
+
+## Two examples
+
+### Women and water
+
+We take advantage of a randomized policy experiment in India where, since the mid-1990s, one-third of village council heads have been randomly reserved for female politicians. The CSV data set women.csv contains a subset of this data from West Bengal. The policy was implemented at the level of government called Gram Panchayat or GP. Each GP contains many villages. For this study, two villages were selected at random within each GP for detailed data collection. 
+
+```{r}
+women <- read.csv("women.csv")
+```
+
+| Name       | Description                                         |
+|------------|-----------------------------------------------------|
+| GP         | an identifier for the Gram Panchayat (GP)           |
+| village    | identifier for each village                         |
+| reserved   | GP was reserved for women leaders or not            |
+| female     | GP had a female leader or not                       |
+| irrigation | number of new or repaired irrigation facilities     |
+| water      | number of new or repaired drinking water facilities |
+
+1. Draft a hypothesis on the relationship between the reservation policy and water projects.
+
+2. Fit a linear regression model with water as the dependent measure and reserved as the independent measure. Output standard errors and p-values with summary() and confidence intervals with confint().
+
+```{r}
+
+```
+
+3. Interpret your results. What do we make of the efficacy of the policy to reserve seats? What can you say about your hypothesis?
+
+4. Draft a hypothesis on the relationship between the reservation policy and irrigation projects.
+
+5. Fit a linear regression model with irrigation as the dependent measure and reserved as the predictor. Output standard errors and p-values with summary() and confidence intervals with confint().
+
+```{r}
+
+```
+
+6. Interpret your results. What do we make of the efficacy of the policy to reserve seats? What can you say about your hypothesis?
+
+### Minimum wage
+
+```{r}
+minwage <- read.csv("minwage.csv")
+```
+
+In 1992, the state of New Jersey (NJ) in the United States raised the minimum wage from \$4.25 to \$5.05 per hour. Did such an increase in minimum wage reduce employment as economic theory predicts? As discussed above, answering this question requires inference about the NJ employment rate in the absence of such a raise in minimum wage. Since this counterfactual outcome is not observable, we must somehow estimate it using observed data.
+
+| Name       | Description                                                        |
+|------------|--------------------------------------------------------------------|
+| chain      | name of fastfood restaurant chain                                  |
+| location   | location of restaurants (centralNJ, northNJ, PA, shoreNJ, southNJ) |
+| wageBefore | wage before the minimum wage increase                              |
+| wageAfter  | wage after the minimum wage increase                               |
+| fullBefore | number of full-time employees before the minimum wage increase     |
+| fullAfter  | number of full-time employees after the minimum wage increase      |
+| partBefore | number of part-time employees before the minimum wage increase     |
+| partAfter  | number of part-time employees after the minimum wage increase      |
+
+1. Compute a variable recording the proportion of full-time employment before the minimum wage increase, and another doing this after the minimum wage increase.  Also create a dummy for location where PA=0 and NJ=1.
+
+```{r}
+
+```
+
+2. Draft a hypothesis on the relationship between New Jersey and the proportion of full time employees after the reform.
+
+3. Fit a regression model with fullPropAfter as the dependent measure and with NJ, fullPropBefore, wageBefore and chain as the predictor variables.  Output standard errors and p-values with summary() and confidence intervals with confint().
+
+```{r}
+
+```
+
+4. Interpret your results. What do we make of the policy change in New Jersey? What can you say about your hypothesis?
+
+## Evaluation
+
+1. On a scale ranging between 1 (Too Hard) and 10 (Too Easy), how was today's class: 
+2. What was the easiest thing to understand?
+3. What was the most difficult thing to understand?
+4. How long did you spend on the assignment outside of class?
+
