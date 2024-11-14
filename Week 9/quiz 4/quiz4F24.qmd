@@ -1,0 +1,127 @@
+---
+title: "Quiz 4"
+format:
+  pdf
+---
+
+# Mother Wage Penalties
+
+```{r setup, echo=F}
+library(knitr)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+Across industrialized countries, it is a well-studied phenomenon that childless women are paid more on average than mothers. In this exercise, we use survey data to investigate how the structural aspects of jobs affect the wages of mothers relative to the wages of childless women.
+
+The exercise is based on: Wei-hsin Yu and Janet Chen-Lan Kuo. 2017. [The Motherhood Wage Penalty by WorkConditions: How Do Occupational Characteristics Hinder or Empower Mothers?](https://doi.org/10.1177/0003122417712729)" *American Sociological Review* 82(4): 744-769.
+
+In this paper, the authors examine the association between the so-called *mother wage penalty* (i.e., the pay gap between mothers and non-mothers) and occupational characteristics. Three prominent explanations for the motherhood wage penalty--"stressing work-family conflict and job performance," "compensating differentials," and "employer discrimination"--provide hypotheses about the relationship between penalty changes and occupational characteristics. The authors use data from 16 waves of the National Longitudinal Survey of Youth to estimate the effects of five occupational characteristics on the mother wage penalty and to test these hypotheses. 
+
+This paper uses a type of data known as 'panel data.' Panel data consist of observations on the same people over time. In this example, we are going to analyze the same women over multiple years. When analyzing panel data, each time period is referred to as a *wave*, so here each year is a wave. 
+
+Variables:
+
+| Name                | Description                                                      |
+|---------------------|------------------------------------------------------------------|
+| `PUBID`             | ID of woman                                                     |
+| `year`              | Year of observation                                             |
+| `wage`              | Hourly wage, in cents                                           |
+| `numChildren`       | Number of children                                              |
+| `age`               | Age in years                                                    |
+| `region`            | Region (1=North East, 2=North Central, 3=South, 4=West)         |
+| `urban`             | Geographical classification (1=urban, 0=otherwise)              |
+| `marstat`           | Marital status                                                  |
+| `educ`              | Level of education                                              |
+| `school`            | School enrollment (TRUE=enrolled, FALSE=otherwise)              |
+| `experience`        | Experience since age 14, in days                                |
+| `tenure`            | Job tenure, in years                                            |
+| `tenure2`           | Job tenure squared                                              |
+| `fullTime`          | Employment status (TRUE=full-time, FALSE=otherwise)             |
+| `firmSize`          | Size of the firm                                                |
+| `multipleLocations` | Multiple locations (1=yes, 0=no)                                |
+| `unionized`         | Unionization status (1=unionized, 0=otherwise)                  |
+| `industry`          | Job industry type                                               |
+| `hazardous`         | Hazard measure (1-2)                                            |
+| `regularity`        | Regularity measure (1-5)                                        |
+| `competitiveness`   | Competitiveness measure (1-5)                                   |
+| `autonomy`          | Autonomy measure (1-5)                                          |
+| `teamwork`          | Teamwork requirements measure (1-5)                             |
+| `logwage`           | Logarithm of wage                                               |
+
+```{r}
+wages <- read.csv("wages.csv")
+```
+
+*Round all results to two decimal places*
+
+Question 1. Examine the average logwage for each region (North East, North Central, South, West) and calculate the difference between the highest and lowest regional averages. Report this difference.
+
+```{r}
+
+```
+
+Answer:
+
+Question 2. Fit a linear regression model predicting logwage using numChildren, experience, marstat, urban, and an interaction term between numChildren and experience. Using this model, calculate the predicted logwage for a woman with the following characteristics:
+
+- numChildren = 2
+- experience = 5000 days
+- marstat = "Married"
+- urban = 1 (lives in an urban area)
+
+```{r}
+
+```
+Answer: 
+
+Question 3. Divide the sample based on the median of educ, creating two groups: those below the median (low_educ) and those at or above the median (high_educ). For the high_educ group fit a model predicting logwage using age, experience, numChildren, marstat, urban, and competitiveness. Report the coefficient of urban for the high_educ group.
+
+```{r}
+
+```
+Answer: 
+
+Question 4. Compute confidence intervals for the model from Question 3, but include the following additional covariates in the model: marstat, urban, experience, and firmSize. For each estimate in this updated model, calculate the width of the confidence interval (by subtracting the lower bound from the upper bound). Identify the largest width, which represents the *least* precise estimate.
+
+```{r}
+
+```
+Answer: 
+
+Question 5. Create a new model with `logwage` as the DV and the following variables as the IVs:
+
+- region
+- urban
+- marstat
+- educ
+- school
+- experience
+- tenure
+- fullTime
+- firmSize
+- multipleLocations 
+- unionized
+  
+How many coefficients (excluding the intercept) are statistically significant?
+
+```{r}
+
+
+```
+
+Answer:
+
+Question 7: Use a regression model to predict the likelihood of a woman being married (marstat = "Married") using the following as independent variables: age, numChildren, tenure, and urban. To do this you will need to recode marstat so that "Married" = 1 and all other values = 0.
+
+Using this model, calculate the predicted probability of marriage for a woman with the following characteristics:
+
+- age = 35 years
+- numChildren = 1
+- tenure = 14 years
+- urban = 0 (lives in a non-urban area)
+
+```{r}
+
+```
+Answer:
