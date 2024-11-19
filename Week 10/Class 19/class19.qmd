@@ -1,0 +1,118 @@
+---
+title: "Class 19: The Last One"
+author: "Sean Westwood"
+format:
+  pdf
+---
+```{r setup, echo=F}
+library(knitr)
+library(formatR)
+opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+# Practice
+
+You are responsible for reviewing terms from the book and lecture.  Today we will practice some analysis.  You will work on the practice by yourself.  I will answer questions as if this were an exam.
+
+**Time management will be important during the final.  You should be able to answer the questions below in less than 60 minutes**
+
+## Sex Ratio and the Price of Agricultural Crops in China
+
+
+In this exercise, we consider the effect of a change in the price of agricultural goods whose production and cultivation are dominated by either men or women. 
+
+This exercise is based on: Qian, Nancy. 2008. “[Missing Women and the Price of Tea in China:The Effect of Sex-Specific Earnings on Sex Imbalance.](http://dx.doi.org/10.1162/qjec.2008.123.3.1251)” *Quarterly Journal of Economics* 123(3): 1251–85. 
+
+Our data come from China, where centrally planned production targets during the Maoist era led to changes in the prices of major staple crops. We focus here on tea, the production and cultivation of which required a large female labor force, as well as orchard fruits, for which the labor force was overwhelmingly male.  We use price increases brought on by government policy change in 1979 as a proxy for increases in sex-specific income, and ask the following question: Do changes in sex-specific income alter the incentives for Chinese families to have
+children of one gender over another? 
+
+ Name                Description
+ ------------------- ---------------------------------------------------------
+ `birpop`            Birth population in a given year
+ `biryr`             Year of cohort (birth year)
+ `cashcrop`          Amount of cash crops planted in county
+ `orch`              Amount of orchard-type crops planted in county
+ `teasown`           Amount of tea sown in county 
+ `sex`               Proportion of males in birth cohort
+ `post`              Indicator variable for introduction of price reforms (0 before and 1 after)
+  `han`               Proportion Han Chinese
+
+```{r}
+women <- read.csv("chinawomen.csv", header = TRUE)
+```
+
+
+## Question 1
+
+1.1. Compute the mean sex ratio (proportion of males/total population) in 1985 separately for tea-producing (>0)/non-orchard (==0) regions and orchard(>0)/non-tea-producing (==0) regions, then take the difference in means for the two groups.  Note that will will classify a region where either tea or orchards are >0 and the other is 0.  This excludes regions that produce both.
+
+```{r}
+
+```
+
+1.2. Now compute the 95\% CIs for this difference.
+
+```{r}
+
+```
+
+1.3. Repeat the analysis above (1.1 and 1.2) for 1983.
+
+```{r}
+
+```
+
+## Question 2
+
+2.1. Compute the mean difference between the two types of regions for each of the years between 1981 and 1989.  In which year was the absolute difference the largest? Hint: you can use the abs() function.
+
+```{r}
+
+```
+
+## Question 3
+
+3.1. Now compare the population of Han Chinese in tea-producing and orchard-producing regions before the policy enactment (in 1978). Estimate the mean difference and 95\% confidence intervals for the two regions. 
+
+```{r}
+
+```
+
+3.2. Do we reject the null hypothesis of no difference in Han population?
+
+## Question 4
+
+4.1. Compute the mean difference in Han population for each year before the reform in the two regions, i.e., from 1962 until 1978 (a for loop might be easiest, but it is not required). 
+
+```{r}
+
+```
+
+## Question 5
+
+5.1. Now, explore the relationship between sex ratios (DV) and post, teasown, orch and biryr.  To do this use a linear regression model.
+
+```{r}
+
+```
+
+5.2. Given our model, what would we expect the sex ratio to be post-treatment in 1981 for a region with the mean amount of teasown (no orchards)?
+
+```{r}
+
+```
+
+5.3. What is the 95% CI for orch?
+
+```{r}
+
+```
+
+## Evaluation
+
+1. On a scale ranging between 1 (Too Hard) and 10 (Too Easy), how was today's class: 
+2. What was the easiest thing to understand?
+3. What was the most difficult thing to understand?
+4. How long did you spend on the assignment outside of class?
+
