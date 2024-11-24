@@ -1,0 +1,97 @@
+---
+title: "Final"
+author: ""
+format:
+  pdf
+---
+
+# American National Election Studies
+
+In this exercise, we explore the data of the American National Election Studies (ANES).  The ANES contained survey data on American elections from 1948-2020.  It is designed to measure political attitudes and behaviors, as well as attitudes towards groups of Americans.
+
+We will use a very small subset of the full dataset for this exam.  We will primarily focus on voter traits, voting behavior and attitudes toward specific groups of Americans.
+
+| Variable       | Value                                                                        |
+|----------------|------------------------------------------------------------------------------|
+| year           | Year of the election                                                         |
+| ownhome        | 1 = Yes, 0 = No                                                              |
+| gender         | 1 = Man; 0 = Woman                                                           |
+| voted          | 1 = voted; 0 = did not vote                                                  |
+| race           | 1 = White; 2= Black; 3 = Asian; 4 = American Indian; 5 = Hispanic; 6+ = Other |
+| education      | 1 = Grade School or Less; 2 = High School; 3 = Some college; 4 = College +   |
+| feeling_jews   | Feeling toward Jews 0-97 (larger numbers are more positive)                  |
+| feeling_blacks | Feeling toward blacks 0-97 (larger numbers are more positive)                |
+| feeling_white  | Feeling toward whites 0-97 (larger numbers are more positive)                |
+| feeling_police | Feeling toward police 0-97 (larger numbers are more positive)                |
+| pid            | 1 = Democrats; 2 = Independents; 3 = Republicans                             |
+
+
+
+
+```{r}
+anes <- read.csv("anes.csv")
+```
+
+*Round all results to two decimal places*
+
+## Question 1
+
+```{r}
+
+```
+
+## Question 2
+
+```{r}
+
+```
+
+## Question 3
+
+
+```{r}
+
+```
+
+### Question 4
+
+
+```{r}
+
+```
+
+## Question 5
+
+```{r}
+
+```
+## Question 6
+
+
+```{r}
+
+```
+## Question 7
+
+```{r}
+
+```
+
+## Question 8
+
+```{r}
+
+```
+
+## Question 9
+
+```{r}
+
+```
+
+## Question 10
+
+```{r}
+
+```
+
